@@ -5,6 +5,7 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [compojure "1.5.1"]
                  [ring/ring-defaults "0.2.1"]
+                 [ring/ring-jetty-adapter "1.2.2"]
                  [http-kit "2.1.18"]
                  [org.clojure/data.json "0.2.6"]
                  [com.cemerick/url "0.1.1"]
