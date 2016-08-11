@@ -14,6 +14,7 @@
             [lein-environ "1.1.0"]]
   :uberjar-name "cwmapper-0.1.0-SNAPSHOT-standalone.jar"
   :ring {:handler cwmapper.handler/app}
-  :profiles {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
-                                  [ring/ring-mock "0.3.0"]]
-                   :ring         {:stacktrace-middleware prone.middleware/wrap-exceptions}}})
+  :profiles {:dev     {:dependencies [[javax.servlet/servlet-api "2.5"]
+                                      [ring/ring-mock "0.3.0"]]
+                       :ring         {:stacktrace-middleware prone.middleware/wrap-exceptions}}
+             :uberjar {:aot :all}})
