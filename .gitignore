@@ -3,8 +3,7 @@
 /classes
 /checkouts
 /test
-/target/classes
-/target/stale
+/target
 profiles.clj
 pom.xml
 pom.xml.asc
