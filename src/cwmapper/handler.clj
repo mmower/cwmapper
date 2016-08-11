@@ -1,12 +1,12 @@
 (ns cwmapper.handler
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
-            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
+            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
+            [cwmapper.views.mapper :refer [mapper-routes]]))
 
 (defroutes app-routes
-  (GET "/" [] "Hello World")
+           (route/resources "/")
+           (route/not-found "Not Found"))
 
-  (route/not-found "Not Found"))
-
-(def app
-  (wrap-defaults app-routes site-defaults))
+(def app (-> (routes mapper-routes app-routes)
+             (wrap-defaults site-defaults)))
