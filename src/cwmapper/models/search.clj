@@ -32,10 +32,13 @@
     (map (fn [location result]
            (-> location
                (assoc :distance (get-in result ["distance" "text"]))
-               (assoc :duration (get-in result ["duration" "text"])))) locations results')))
+               (assoc :duration (get-in result ["duration" "text"]))
+               (assoc :sort (get-in result ["duration" "value"])))) locations results')))
 
 (defn search [postcode]
   (let [{:keys [status body error] :as resp} @(http/get (search-url postcode))]
     (if error
-      (println "Failed, exception is: " error)
-      (map-durations (json/read-str body)))))
+      (do
+        (println "Failed, exception is: " error)
+        false)
+      (sort-by :sort (map-durations (json/read-str body))))))
